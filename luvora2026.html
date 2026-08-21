@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Date 💗</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+
+/* ==============================
+   COLORS
+============================== */
+
+:root {
+    --pink: #ff4f91;
+    --hot-pink: #ff1975;
+    --light-pink: #ffd8e8;
+    --white-pink: #fff8fb;
+    --dark-pink: #5d163b;
+    --shadow: #9d275d;
+    --border: #d73572;
+}
+
+
+/* ==============================
+   GENERAL
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "VT323", monospace;
+    color: var(--dark-pink);
+    background: #ffb5d2;
+}
+
+
+/* ==============================
+   BACKGROUND
+============================== */
+
+.app {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 12% 15%,
+            rgba(255,255,255,.7) 0 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255,255,255,.55) 0 2px,
+            transparent 3px
+        ),
+
+        linear-gradient(
+            #ff8fbd,
+            #ffafd0 50%,
+            #ffd5e5
+        );
+}
+
+
+/* ==============================
+   STARS
+============================== */
+
+.star {
+
+    position: absolute;
+
+    color: white;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    animation: twinkle 2.5s infinite;
+
+    z-index: 1;
+}
+
+.star1 {
+    left: 8%;
+    top: 22%;
+}
+
+.star2 {
+    right: 8%;
+    top: 18%;
+    animation-delay: .6s;
+}
+
+.star3 {
+    left: 15%;
+    top: 52%;
+    animation-delay: 1s;
+}
+
+.star4 {
+    right: 15%;
+    top: 56%;
+    animation-delay: 1.5s;
+}
+
+.star5 {
+    left: 48%;
+    top: 13%;
+    animation-delay: .3s;
+}
+
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .45;
+        transform: scale(1.3) rotate(10deg);
+    }
+}
+
+
+/* ==============================
+   CLOUDS
+============================== */
+
+.cloud {
+
+    position: absolute;
+
+    bottom: -25px;
+
+    width: 250px;
+
+    height: 90px;
+
+    background: #fff3f8;
+
+    border-radius: 100px;
+
+    opacity: .85;
+
+    z-index: 1;
+}
+
+.cloud::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+
+    height: 110px;
+
+    background: #fff3f8;
+
+    border-radius: 50%;
+
+    left: 45px;
+
+    bottom: 25px;
+}
+
+.cloud::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+
+    height: 130px;
+
+    background: #fff3f8;
+
+    border-radius: 50%;
+
+    right: 30px;
+
+    bottom: 15px;
+}
+
+.cloud1 {
+    left: -50px;
+}
+
+.cloud2 {
+
+    right: -70px;
+
+    bottom: 70px;
+
+    transform: scale(.9);
+}
+
+
+/* ==============================
+   HILLS
+============================== */
+
+.hills {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 25%;
+
+    background: #f789b7;
+
+    clip-path:
+        polygon(
+            0 72%,
+            10% 55%,
+            20% 70%,
+            30% 45%,
+            42% 68%,
+            53% 40%,
+            65% 66%,
+            78% 48%,
+            90% 68%,
+            100% 48%,
+            100% 100%,
+            0 100%
+        );
+
+    opacity: .7;
+
+    z-index: 1;
+}
+
+
+/* ==============================
+   SCREENS
+============================== */
+
+.screen {
+
+    min-height: 100vh;
+
+    width: min(720px, 100%);
+
+    margin: auto;
+
+    padding: 35px 22px 80px;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.screen.active {
+
+    display: flex;
+
+    animation: screenIn .55s ease both;
+}
+
+
+@keyframes screenIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* ==============================
+   TITLE
+============================== */
+
+.pixel-title {
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: clamp(24px, 6vw, 45px);
+
+    line-height: 1.55;
+
+    color: white;
+
+    text-shadow:
+        4px 4px 0 var(--shadow),
+        -2px -2px 0 #ff77aa;
+
+    margin: 20px 0 28px;
+}
+
+
+.subtitle {
+
+    font-size: 28px;
+
+    color: #8e2857;
+
+    margin: -8px 0 25px;
+}
+
+
+/* ==============================
+   CHARACTER
+============================== */
+
+.frame {
+
+    width: min(285px, 72vw);
+
+    aspect-ratio: 1;
+
+    background: #20131c;
+
+    border: 10px solid #ffb6d2;
+
+    outline: 5px solid var(--border);
+
+    box-shadow:
+        7px 8px 0 #8e204e,
+        inset 0 0 0 4px white;
+
+    display: grid;
+
+    place-items: center;
+
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+
+.frame::before {
+
+    content: "♥";
+
+    position: absolute;
+
+    top: -2px;
+
+    left: 8px;
+
+    color: #ff80ae;
+}
+
+
+.frame::after {
+
+    content: "♥";
+
+    position: absolute;
+
+    top: -2px;
+
+    right: 8px;
+
+    color: #ff80ae;
+}
+
+
+.cat {
+
+    width: 72%;
+
+    height: 72%;
+
+    position: relative;
+}
+
+
+.cat .head {
+
+    position: absolute;
+
+    width: 65%;
+
+    height: 52%;
+
+    left: 18%;
+
+    top: 18%;
+
+    background: #fffaf4;
+
+    border: 4px solid #b8a9ae;
+
+    border-radius: 48% 48% 42% 42%;
+}
+
+
+.cat .ear1,
+.cat .ear2 {
+
+    position: absolute;
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 24px solid transparent;
+
+    border-right: 24px solid transparent;
+
+    border-bottom: 44px solid #fffaf4;
+
+    top: 2%;
+}
+
+
+.cat .ear1 {
+
+    left: 17%;
+
+    transform: rotate(-23deg);
+}
+
+
+.cat .ear2 {
+
+    right: 15%;
+
+    transform: rotate(23deg);
+}
+
+
+.cat .eye {
+
+    position: absolute;
+
+    width: 7px;
+
+    height: 10px;
+
+    background: #5a4a51;
+
+    border-radius: 50%;
+
+    top: 44%;
+}
+
+
+.cat .e1 {
+    left: 38%;
+}
+
+.cat .e2 {
+    right: 38%;
+}
+
+
+.cat .mouth {
+
+    position: absolute;
+
+    left: 47%;
+
+    top: 56%;
+
+    width: 12px;
+
+    height: 7px;
+
+    border-bottom: 3px solid #5a4a51;
+
+    border-radius: 50%;
+}
+
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.pixel-btn {
+
+    border: 0;
+
+    color: white;
+
+    background: var(--hot-pink);
+
+    min-width: 185px;
+
+    padding: 18px 28px;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 14px;
+
+    box-shadow:
+        0 7px 0 #9c1c53,
+        0 0 0 4px white,
+        0 0 0 8px var(--border);
+
+    margin: 14px;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+
+.pixel-btn:hover {
+
+    transform: translateY(-4px);
+
+    filter: brightness(1.08);
+}
+
+
+.pixel-btn:active {
+
+    transform: translateY(4px);
+}
+
+
+.pixel-btn.no {
+
+    background: white;
+
+    color: #a52d60;
+
+    box-shadow:
+        0 5px 0 #df6b9a,
+        0 0 0 3px var(--border);
+}
+
+
+/* ==============================
+   NO MESSAGE
+============================== */
+
+.tease {
+
+    min-height: 30px;
+
+    font-size: 24px;
+
+    color: #8e2857;
+}
+
+
+/* ==============================
+   YAY
+============================== */
+
+.yay-art {
+
+    width: min(300px, 75vw);
+
+    aspect-ratio: 1;
+
+    background: white;
+
+    border: 8px solid #ffb6d2;
+
+    outline: 4px solid var(--border);
+
+    box-shadow:
+        7px 8px 0 #8e204e;
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+.couple {
+
+    font-size: 90px;
+
+    animation:
+        coupleBounce
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes coupleBounce {
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+
+/* ==============================
+   CARD
+============================== */
+
+.card {
+
+    width: min(590px, 100%);
+
+    background: rgba(255,248,251,.95);
+
+    border: 5px solid var(--border);
+
+    box-shadow:
+        9px 10px 0 #8e204e;
+
+    padding: 30px 22px;
+}
+
+
+.card h2 {
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    color: #c62965;
+}
+
+
+.card p {
+
+    font-size: 25px;
+
+    line-height: 1.3;
+}
+
+
+/* ==============================
+   INPUT
+============================== */
+
+.input {
+
+    width: 100%;
+
+    padding: 16px;
+
+    border: 3px solid #e76d9d;
+
+    background: white;
+
+    color: #6d2047;
+
+    font-family: "VT323", monospace;
+
+    font-size: 25px;
+
+    outline: none;
+
+    text-align: center;
+
+    margin: 8px 0 16px;
+}
+
+
+.input:focus {
+
+    border-color: #c62965;
+
+    box-shadow:
+        0 0 0 4px #ffd1e1;
+}
+
+
+/* ==============================
+   ACTIVITIES
+============================== */
+
+.choices {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin: 22px 0;
+}
+
+
+.choice {
+
+    padding: 18px 10px;
+
+    border: 3px solid #e76d9d;
+
+    background: white;
+
+    border-radius: 10px;
+
+    color: #8e2857;
+
+    font-family: "VT323", monospace;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.choice:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 0 #efa1bd;
+}
+
+
+.choice.selected {
+
+    background: var(--pink);
+
+    color: white;
+
+    border-color: #b9235b;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 0 #9d275d;
+}
+
+
+/* ==============================
+   💌 NOTIFICATION
+============================== */
+
+.love-notification {
+
+    position: fixed;
+
+    top: 25px;
+
+    right: 25px;
+
+    width: min(
+        370px,
+        calc(100vw - 35px)
+    );
+
+    background: rgba(
+        255,
+        248,
+        252,
+        .97
+    );
+
+    border: 3px solid var(--pink);
+
+    box-shadow:
+        7px 7px 0 #9d275d,
+        0 0 0 3px white;
+
+    padding: 20px 22px;
+
+    z-index: 9999;
+
+    text-align: left;
+
+    transform: translateX(130%);
+
+    opacity: 0;
+
+    transition:
+        transform .55s cubic-bezier(
+            .68,
+            -.55,
+            .27,
+            1.55
+        ),
+        opacity .35s ease;
+}
+
+
+.love-notification.show {
+
+    transform: translateX(0);
+
+    opacity: 1;
+}
+
+
+.love-notification::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4f91,
+            #ffb2d0,
+            #ff4f91
+        );
+}
+
+
+.notification-heart {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 16px;
+
+    font-size: 25px;
+
+    color: #ff4f91;
+
+    animation:
+        heartBeat
+        1.2s
+        infinite;
+}
+
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+.notification-title {
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size: 12px;
+
+    color: #c62965;
+
+    line-height: 1.6;
+
+    padding-right: 30px;
+
+    margin-top: 8px;
+
+    margin-bottom: 10px;
+}
+
+
+.notification-text {
+
+    font-size: 23px;
+
+    line-height: 1.3;
+
+    color: #6c2048;
+}
+
+
+.notification-close {
+
+    position: absolute;
+
+    right: 8px;
+
+    bottom: 5px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #c62965;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
+   FINAL NOTE
+============================== */
+
+.letter {
+
+    width: min(590px, 100%);
+
+    background: #fffdf5;
+
+    color: #6c403f;
+
+    padding: 35px 28px;
+
+    box-shadow:
+        8px 10px 0 #8e204e;
+
+    border: 2px solid #e4c6c2;
+
+    transform: rotate(-1deg);
+
+    text-align: left;
+
+    position: relative;
+}
+
+
+.letter::before {
+
+    content: "♥";
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 18px;
+
+    color: #ff4f91;
+
+    font-size: 30px;
+}
+
+
+.letter h2 {
+
+    text-align: center;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    color: #c62965;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+.letter p {
+
+    font-size: 25px;
+
+    line-height: 1.4;
+}
+
+
+/* ==============================
+   CONFETTI
+============================== */
+
+.confetti {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 10000;
+}
+
+
+.confetti span {
+
+    position: absolute;
+
+    width: 8px;
+
+    height: 14px;
+
+    animation:
+        fall
+        3s
+        linear
+        forwards;
+}
+
+
+@keyframes fall {
+
+    from {
+
+        transform:
+            translateY(-30px)
+            rotate(0);
+
+    }
+
+    to {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:520px) {
+
+    .screen {
+        padding:
+            25px 16px 70px;
+    }
+
+    .pixel-title {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
+
+    .pixel-btn {
+        min-width: 145px;
+        padding: 15px 18px;
+        font-size: 11px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+    .card h2 {
+        font-size: 16px;
+    }
+
+    .card p {
+        font-size: 22px;
+    }
+
+    .love-notification {
+
+        top: 15px;
+
+        right: 15px;
+
+        width:
+            calc(100vw - 30px);
+    }
+
+    .notification-title {
+        font-size: 10px;
+    }
+
+    .notification-text {
+        font-size: 21px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- BACKGROUND -->
+
+    <span class="star star1">✦</span>
+
+    <span class="star star2">✧</span>
+
+    <span class="star star3">✦</span>
+
+    <span class="star star4">♡</span>
+
+    <span class="star star5">✧</span>
+
+
+    <div class="cloud cloud1"></div>
+
+    <div class="cloud cloud2"></div>
+
+    <div class="hills"></div>
+
+
+
+    <!-- =========================================
+         💌 NOTIFICATION
+    ========================================== -->
+
+    <div
+        class="love-notification"
+        id="loveNotification">
+
+
+        <div class="notification-heart">
+            ♥
+        </div>
+
+
+        <div
+            class="notification-title"
+            id="notificationTitle">
+
+            💌 A little message
+
+        </div>
+
+
+        <div
+            class="notification-text"
+            id="notificationText">
+
+            Something lovely is waiting for you...
+
+        </div>
+
+
+        <button
+            class="notification-close"
+            onclick="hideNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         🏠 HOME
+    ========================================== -->
+
+    <section
+        class="screen active"
+        id="home">
+
+
+        <div class="frame">
+
+
+            <div class="cat">
+
+                <div class="ear1"></div>
+
+                <div class="ear2"></div>
+
+
+                <div class="head">
+
+                    <i class="eye e1"></i>
+
+                    <i class="eye e2"></i>
+
+                    <i class="mouth"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <h1 class="pixel-title">
+
+            Will you go
+            <br>
+            out with me?
+
+        </h1>
+
+
+
+        <div>
+
+            <button
+                class="pixel-btn"
+                id="yesBtn">
+
+                YES ✦
+
+            </button>
+
+
+            <button
+                class="pixel-btn no"
+                id="noBtn">
+
+                NO
+
+            </button>
+
+        </div>
+
+
+
+        <div
+            class="tease"
+            id="tease">
+
+            Babe please :(
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         🎉 YAY
+    ========================================== -->
+
+    <section
+        class="screen"
+        id="yay">
+
+
+        <div class="yay-art">
+
+            <div class="couple">
+
+                🐻‍❄️💗🐻
+
+            </div>
+
+        </div>
+
+
+        <h1 class="pixel-title">
+
+            YAY!
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            I'm so glad you said yes. 💗
+
+        </p>
+
+
+        <button
+            class="pixel-btn"
+            data-next="date">
+
+            PRESS TO CONTINUE →
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         📅 DATE
+    ========================================== -->
+
+    <section
+        class="screen"
+        id="date">
+
+
+        <div class="card">
+
+
+            <h2>
+
+                PICK A DATE ✦
+
+            </h2>
+
+
+            <p>
+
+                Choose the day for our
+                cute little plan.
+
+            </p>
+
+
+            <input
+                class="input"
+                id="dateInput"
+                type="date"
+            >
+
+
+            <p id="dateSummary">
+
+                Choose a date above 💗
+
+            </p>
+
+
+            <button
+                class="pixel-btn"
+                id="dateNext">
+
+                CONTINUE →
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         🎯 ACTIVITY
+    ========================================== -->
+
+    <section
+        class="screen"
+        id="activity">
+
+
+        <div class="card">
+
+
+            <h2>
+
+                WHAT WOULD
+                <br>
+                YOU LIKE TO DO?
+
+            </h2>
+
+
+            <p>
+
+                Pick the plan that
+                feels the most like you. 💕
+
+            </p>
+
+
+            <div class="choices">
+
+
+                <button
+                    class="choice"
+                    data-value="🍿 Movie night">
+
+                    🍿
+                    <br>
+                    MOVIE NIGHT
+
+                </button>
+
+
+                <button
+                    class="choice"
+                    data-value="☕ Cute café date">
+
+                    ☕
+                    <br>
+                    CUTE CAFÉ
+
+                </button>
+
+
+                <button
+                    class="choice"
+                    data-value="🍕 Dinner together">
+
+                    🍕
+                    <br>
+                    DINNER
+
+                </button>
+
+
+                <button
+                    class="choice"
+                    data-value="🌸 Picnic">
+
+                    🌸
+                    <br>
+                    PICNIC
+
+                </button>
+
+
+            </div>
+
+
+            <button
+                class="pixel-btn"
+                id="activityNext">
+
+                LOCK IT IN ♥
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         💌 PERSONAL DETAILS
+    ========================================== -->
+
+    <section
+        class="screen"
+        id="details">
+
+
+        <div class="card">
+
+
+            <h2>
+
+                ONE LAST THING 💌
+
+            </h2>
+
+
+            <p>
+
+                What name should I put
+                on the little note?
+
+            </p>
+
+
+            <input
+                class="input"
+                id="nameInput"
+                maxlength="40"
+                placeholder="Your name..."
+            >
+
+
+            <p>
+
+                Write something cute
+                if you want. ♡
+
+            </p>
+
+
+            <textarea
+                class="input"
+                id="messageInput"
+                rows="3"
+                maxlength="160"
+                placeholder="A little message..."></textarea>
+
+
+            <button
+                class="pixel-btn"
+                id="finishBtn">
+
+                SEND THE NOTE 💌
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         💖 FINAL
+    ========================================== -->
+
+    <section
+        class="screen"
+        id="letter">
+
+
+        <div class="letter">
+
+
+            <h2>
+
+                IT'S A DATE! 💗
+
+            </h2>
+
+
+            <p>
+
+                Dear
+                <strong id="finalName">
+                    you
+                </strong>,
+
+            </p>
+
+
+            <p id="finalMessage">
+
+                I can't wait for
+                our little adventure together!
+
+            </p>
+
+
+            <p>
+
+                📅
+                <strong id="finalDate"></strong>
+
+                <br><br>
+
+                ✨
+                <strong id="finalActivity"></strong>
+
+            </p>
+
+
+            <p style="text-align:center">
+
+                See you soon ♡
+
+            </p>
+
+
+        </div>
+
+
+        <button
+            class="pixel-btn"
+            id="restart">
+
+            PLAY AGAIN ↻
+
+        </button>
+
+
+    </section>
+
+
+</div>
+
+
+
+<!-- CONFETTI -->
+
+<div
+    class="confetti"
+    id="confetti">
+</div>
+
+
+
+<script>
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+let selectedDate = "";
+
+let selectedActivity = "";
+
+let noCount = 0;
+
+let notificationTimer;
+
+
+/* ==========================================
+   SCREEN NAVIGATION
+========================================== */
+
+const screens =
+    document.querySelectorAll(".screen");
+
+
+function showScreen(id) {
+
+    screens.forEach(screen => {
+
+        screen.classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ==========================================
+   💌 NOTIFICATION
+========================================== */
+
+function showNotification(
+    title,
+    message
+) {
+
+    const notification =
+        document.getElementById(
+            "loveNotification"
+        );
+
+
+    document.getElementById(
+        "notificationTitle"
+    ).textContent = title;
+
+
+    document.getElementById(
+        "notificationText"
+    ).textContent = message;
+
+
+    notification.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        notificationTimer
+    );
+
+
+    notificationTimer =
+        setTimeout(() => {
+
+            hideNotification();
+
+        }, 6500);
+
+}
+
+
+function hideNotification() {
+
+    document
+        .getElementById(
+            "loveNotification"
+        )
+        .classList.remove(
+            "show"
+        );
+
+}
+
+
+/* ==========================================
+   🎊 CONFETTI
+========================================== */
+
+function celebrate() {
+
+    const box =
+        document.getElementById(
+            "confetti"
+        );
+
+
+    box.innerHTML = "";
+
+
+    const colors = [
+
+        "#ffffff",
+        "#ff4f91",
+        "#ffb5d2",
+        "#c62965",
+        "#ffd9e8"
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < 65;
+        i++
+    ) {
+
+        const piece =
+            document.createElement(
+                "span"
+            );
+
+
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+
+        piece.style.top =
+            (-10 -
+            Math.random() * 30)
+            + "px";
+
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random()
+                    * colors.length
+                )
+            ];
+
+
+        piece.style.animationDelay =
+            Math.random()
+            * .8 + "s";
+
+
+        box.appendChild(piece);
+
+    }
+
+
+    setTimeout(() => {
+
+        box.innerHTML = "";
+
+    }, 3500);
+
+}
+
+
+/* ==========================================
+   💗 YES BUTTON
+========================================== */
+
+document
+    .getElementById("yesBtn")
+    .onclick = function() {
+
+        celebrate();
+
+
+        showNotification(
+
+            "💗 YAY!",
+
+            "You said yes! Okay... this just made my whole day. ♡"
+
+        );
+
+
+        setTimeout(() => {
+
+            showScreen("yay");
+
+        }, 500);
+
+    };
+
+
+/* ==========================================
+   😈 NO BUTTON
+========================================== */
+
+const noMessages = [
+
+    "Babe please :(",
+
+    "Are you sure? 🥺",
+
+    "Think again...",
+
+    "That can't be your final answer 😭",
+
+    "I'll give you one more chance... 💗"
+
+];
+
+
+const noButton =
+    document.getElementById(
+        "noBtn"
+    );
+
+
+noButton.onclick = function() {
+
+    noCount++;
+
+
+    document
+        .getElementById("tease")
+        .textContent =
+        noMessages[
+            Math.min(
+                noCount,
+                noMessages.length - 1
+            )
+        ];
+
+
+    if (noCount >= 4) {
+
+        noButton.textContent =
+            "YES? 💗";
+
+
+        noButton.className =
+            "pixel-btn";
+
+
+        noButton.style.transform =
+            "none";
+
+
+        noButton.onclick =
+            function() {
+
+                celebrate();
+
+
+                showNotification(
+
+                    "💗 I KNEW IT!",
+
+                    "That YES was hiding in there somewhere. ♡"
+
+                );
+
+
+                setTimeout(() => {
+
+                    showScreen("yay");
+
+                }, 500);
+
+            };
+
+    } else {
+
+        noButton.style.transform =
+
+            `translate(
+                ${(Math.random()-.5)*100}px,
+                ${(Math.random()-.5)*50}px
+            )`;
+
+    }
+
+};
+
+
+/* ==========================================
+   CONTINUE BUTTONS
+========================================== */
+
+document
+    .querySelectorAll("[data-next]")
+    .forEach(button => {
+
+        button.onclick = function() {
+
+            showScreen(
+                this.dataset.next
+            );
+
+        };
+
+    });
+
+
+/* ==========================================
+   📅 DATE
+========================================== */
+
+document
+    .getElementById("dateInput")
+    .onchange = function() {
+
+        selectedDate =
+            this.value;
+
+
+        const date =
+            new Date(
+                this.value +
+                "T12:00:00"
+            );
+
+
+        const prettyDate =
+            date.toLocaleDateString(
+                undefined,
+                {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric"
+                }
+            );
+
+
+        document
+            .getElementById(
+                "dateSummary"
+            )
+            .textContent =
+            prettyDate + " 💗";
+
+
+        showNotification(
+
+            "💌 DATE SAVED!",
+
+            `Aww... ${prettyDate} is going to be a special day. I can't wait! ♡`
+
+        );
+
+    };
+
+
+/* ==========================================
+   DATE CONTINUE
+========================================== */
+
+document
+    .getElementById("dateNext")
+    .onclick = function() {
+
+        if (!selectedDate) {
+
+            showNotification(
+
+                "💗 WAIT A SECOND",
+
+                "Pick a date first. I need to know when our little adventure is happening! ♡"
+
+            );
+
+            return;
+
+        }
+
+
+        showScreen("activity");
+
+    };
+
+
+/* ==========================================
+   🎯 ACTIVITY
+========================================== */
+
+const activityMessages = {
+
+    "🍿 Movie night":
+
+        "A cozy movie night with you? 🍿💕 That sounds absolutely perfect.",
+
+
+    "☕ Cute café date":
+
+        "A cute little café date? ☕💗 Just talking and spending time together sounds perfect.",
+
+
+    "🍕 Dinner together":
+
+        "Dinner together? 🍕💕 Okay... now I'm already excited.",
+
+
+    "🌸 Picnic":
+
+        "A picnic? 🌸💗 That sounds like such a sweet little adventure together."
+
+};
+
+
+document
+    .querySelectorAll(".choice")
+    .forEach(button => {
+
+        button.onclick = function() {
+
+
+            document
+                .querySelectorAll(".choice")
+                .forEach(
+                    b =>
+                        b.classList.remove(
+                            "selected"
+                        )
+                );
+
+
+            this.classList.add(
+                "selected"
+            );
+
+
+            selectedActivity =
+                this.dataset.value;
+
+
+            showNotification(
+
+                "✨ PERFECT CHOICE!",
+
+                activityMessages[
+                    selectedActivity
+                ]
+
+            );
+
+        };
+
+    });
+
+
+/* ==========================================
+   ACTIVITY CONTINUE
+========================================== */
+
+document
+    .getElementById("activityNext")
+    .onclick = function() {
+
+        if (!selectedActivity) {
+
+            showNotification(
+
+                "💗 CHOOSE ONE",
+
+                "Pick the little plan you'd like most. I want this to be special for you. ♡"
+
+            );
+
+            return;
+
+        }
+
+
+        showNotification(
+
+            "💞 IT'S A PLAN!",
+
+            "Okay... it's officially getting real now. One last little thing..."
+
+        );
+
+
+        setTimeout(() => {
+
+            showScreen("details");
+
+        }, 600);
+
+    };
+
+
+/* ==========================================
+   💌 FINAL NOTE
+========================================== */
+
+document
+    .getElementById("finishBtn")
+    .onclick = function() {
+
+
+        const name =
+            document
+                .getElementById(
+                    "nameInput"
+                )
+                .value
+                .trim()
+                || "you";
+
+
+        const message =
+            document
+                .getElementById(
+                    "messageInput"
+                )
+                .value
+                .trim()
+                ||
+                "I can't wait for our little adventure together!";
+
+
+        const date =
+            new Date(
+                selectedDate +
+                "T12:00:00"
+            );
+
+
+        const prettyDate =
+            date.toLocaleDateString(
+                undefined,
+                {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric"
+                }
+            );
+
+
+        document
+            .getElementById(
+                "finalName"
+            )
+            .textContent =
+            name;
+
+
+        document
+            .getElementById(
+                "finalMessage"
+            )
+            .textContent =
+            message;
+
+
+        document
+            .getElementById(
+                "finalDate"
+            )
+            .textContent =
+            prettyDate;
+
+
+        document
+            .getElementById(
+                "finalActivity"
+            )
+            .textContent =
+            selectedActivity;
+
+
+        showNotification(
+
+            "💌 IT'S OFFICIAL!",
+
+            `It's official, ${name}! ${selectedActivity} on ${prettyDate}. I hope this becomes one of those little memories we never forget. ♡`
+
+        );
+
+
+        celebrate();
+
+
+        setTimeout(() => {
+
+            showScreen("letter");
+
+        }, 900);
+
+    };
+
+
+/* ==========================================
+   🔄 RESTART
+========================================== */
+
+document
+    .getElementById("restart")
+    .onclick = function() {
+
+
+        selectedDate = "";
+
+        selectedActivity = "";
+
+        noCount = 0;
+
+
+        document
+            .getElementById(
+                "dateInput"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "nameInput"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "messageInput"
+            )
+            .value = "";
+
+
+        document
+            .querySelectorAll(
+                ".choice"
+            )
+            .forEach(
+                button =>
+                    button.classList.remove(
+                        "selected"
+                    )
+            );
+
+
+        document
+            .getElementById(
+                "tease"
+            )
+            .textContent =
+            "Babe please :(";
+
+
+        noButton.textContent =
+            "NO";
+
+
+        noButton.className =
+            "pixel-btn no";
+
+
+        noButton.style.transform =
+            "none";
+
+
+        hideNotification();
+
+
+        showScreen("home");
+
+    };
+
+</script>
+
+</body>
+</html>
